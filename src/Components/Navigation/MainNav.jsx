@@ -21,7 +21,7 @@ const MainNav = ({ user }) => {
     </nav>
   );
 };
-MainNav.proptypes = {
+MainNav.propTypes = {
   user: Proptypes.string,
 };
 export default MainNav;
