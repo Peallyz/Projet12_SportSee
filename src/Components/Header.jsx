@@ -1,16 +1,23 @@
-import { useParams } from "react-router-dom";
 import MainNav from "./Navigation/MainNav";
+import PropTypes from "prop-types";
 
-const Header = () => {
-  const path = useParams();
-  console.log(path);
-
+const Header = ({ user = "" }) => {
   return (
     <header>
-      <img src="../src/assets/logo.svg" alt="Logo de sportsee" />
-      <MainNav user={path.user} />
+      {user ? (
+        <>
+          <img src="../src/assets/logo.svg" alt="Logo de sportsee" />
+          <MainNav user={user} />
+        </>
+      ) : (
+        <h1>Home</h1>
+      )}
     </header>
   );
+};
+
+Header.propTypes = {
+  user: PropTypes.string,
 };
 
 export default Header;
