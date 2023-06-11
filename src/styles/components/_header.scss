@@ -7,4 +7,15 @@ header {
   img {
     padding: 0 30px;
   }
+  h1 {
+    display: block;
+    margin: 0 auto;
+  }
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+  }
 }
