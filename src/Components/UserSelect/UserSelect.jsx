@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 const UserSelect = ({ data, setPath }) => {
-  console.log(data);
   return (
-    <div>
-      <NavLink to={`/${data.data.id}`} onClick={() => setPath(data.data.id)}>
-        Choisir : {data.data.userInfos.firstname} {data.data.userInfos.lastname}
-      </NavLink>
-    </div>
+    <NavLink to={`/${data.data.id}`} onClick={() => setPath(data.data.id)}>
+      <span>{data.data.userInfos.firstName}</span>
+      <span className="lastname">{data.data.userInfos.lastName}</span>
+      <span>Utilisateur : {data.data.id}</span>
+    </NavLink>
   );
 };
 
