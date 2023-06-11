@@ -1,5 +1,10 @@
+import AsideNav from "../Components/Navigation/AsideNav";
 const Dashboard = () => {
-  return <div></div>;
+  return (
+    <main>
+      <AsideNav />
+    </main>
+  );
 };
 
 export default Dashboard;
