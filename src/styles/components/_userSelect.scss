@@ -1,0 +1,26 @@
+.selector {
+  height: calc(100vh - 90px);
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+
+  a {
+    padding: 20px 40px;
+    border: 2px solid black;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    span {
+      display: block;
+    }
+    &:hover {
+      box-shadow: 4px 4px 5px 3px rgba(0, 0, 0, 0.2);
+      transform: scale(1.02) translate(-2px, -2px);
+    }
+  }
+}
