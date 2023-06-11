@@ -7,16 +7,18 @@ const Home = ({ setPath }) => {
   const [secondUser, secondLoading] = useUserData(18, true);
   return (
     <main>
-      {!firstLoading ? (
-        <UserSelect data={firstUser} setPath={setPath} />
-      ) : (
-        "nope"
-      )}
-      {!secondLoading ? (
-        <UserSelect data={secondUser} setPath={setPath} />
-      ) : (
-        "nope"
-      )}
+      <nav className="selector">
+        {!firstLoading ? (
+          <UserSelect data={firstUser} setPath={setPath} />
+        ) : (
+          "nope"
+        )}
+        {!secondLoading ? (
+          <UserSelect data={secondUser} setPath={setPath} />
+        ) : (
+          "nope"
+        )}
+      </nav>
     </main>
   );
 };

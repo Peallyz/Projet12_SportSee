@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const Header = ({ user = "" }) => {
   return (
     <header>
+      <img src="../src/assets/logo.svg" alt="Logo de sportsee" />
       {user ? (
         <>
-          <img src="../src/assets/logo.svg" alt="Logo de sportsee" />
           <MainNav user={user} />
         </>
       ) : (
