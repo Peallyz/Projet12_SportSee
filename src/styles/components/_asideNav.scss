@@ -1,5 +1,13 @@
 .aside__nav {
-  width: 70px;
-  height: 100%;
+  width: 110px;
+  height: calc(100vh - 90px);
   background-color: black;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+  }
 }
