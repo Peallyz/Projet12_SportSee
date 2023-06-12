@@ -3,9 +3,11 @@ import { PropTypes } from "prop-types";
 
 const AsideLink = ({ img, path }) => {
   return (
-    <NavLink to={path}>
-      <img src={img.url} alt={img.alt} />
-    </NavLink>
+    <li>
+      <NavLink to={`/${path}`}>
+        <img src={img.url} alt={img.alt} />
+      </NavLink>
+    </li>
   );
 };
 
