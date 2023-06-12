@@ -1,7 +1,7 @@
 import MainNav from "./Navigation/MainNav";
 import PropTypes from "prop-types";
 
-const Header = ({ user = "" }) => {
+const Header = ({ user }) => {
   return (
     <header>
       <img src="../src/assets/logo.svg" alt="Logo de sportsee" />
