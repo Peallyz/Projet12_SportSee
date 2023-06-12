@@ -3,7 +3,7 @@ import AsideLink from "./AsideLink";
 
 const AsideNav = ({ path }) => {
   const imgs = [
-    { url: "/src/assets/iconMedidation.svg", alt: "Meditation" },
+    { url: "/src/assets/iconMeditation.svg", alt: "Meditation" },
     { url: "/src/assets/iconSwiming.svg", alt: "Natation" },
     { url: "/src/Assets/iconBike.svg", alt: "Vélo" },
     { url: "/src/assets/iconDumbBell.svg", alt: "Musculation" },
@@ -11,11 +11,11 @@ const AsideNav = ({ path }) => {
   return (
     <nav className="aside__nav">
       <ul>
-        {imgs.map((img) => {
-          <li>
+        {imgs.map((img) => (
+          <>
             <AsideLink img={img} path={path} />
-          </li>;
-        })}
+          </>
+        ))}
       </ul>
     </nav>
   );
