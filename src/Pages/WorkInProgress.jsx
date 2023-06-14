@@ -7,7 +7,7 @@ const WorkInProgress = ({ path }) => {
     <main>
       <AsideNav />
       <h1>
-        Désolé, cette page est en cours de création. Revnez plus tard pour
+        Désolé, cette page est en cours de création. Revenez plus tard pour
         découvrir le reste des fonctionnalités
       </h1>
       <NavLink to={`/${path}`}>Revenir sur votre Dashboard</NavLink>
