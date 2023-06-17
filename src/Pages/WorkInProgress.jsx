@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 import AsideNav from "../Components/Navigation/AsideNav";
+import { useParams } from "react-router-dom";
 
-const WorkInProgress = ({ path }) => {
+const WorkInProgress = () => {
+  const { user } = useParams();
   return (
     <main>
       <AsideNav />
@@ -10,13 +11,9 @@ const WorkInProgress = ({ path }) => {
         Désolé, cette page est en cours de création. Revenez plus tard pour
         découvrir le reste des fonctionnalités
       </h1>
-      <NavLink to={`/${path}`}>Revenir sur votre Dashboard</NavLink>
+      <NavLink to={`/${user}`}>Revenir sur votre Dashboard</NavLink>
     </main>
   );
-};
-
-WorkInProgress.propTypes = {
-  path: PropTypes.string,
 };
 
 export default WorkInProgress;
