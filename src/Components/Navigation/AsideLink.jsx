@@ -1,19 +1,20 @@
 import { NavLink } from "react-router-dom";
 import { PropTypes } from "prop-types";
+import { useParams } from "react-router-dom";
 
-const AsideLink = ({ img, path }) => {
+const AsideLink = ({ img }) => {
+  const { user } = useParams();
   return (
-    <li>
-      <NavLink to={`/${path}`}>
+    <>
+      <NavLink to={`/${user}`}>
         <img src={img.url} alt={img.alt} />
       </NavLink>
-    </li>
+    </>
   );
 };
 
 AsideLink.propTypes = {
   img: PropTypes.object,
-  path: PropTypes.string,
 };
 
 export default AsideLink;
