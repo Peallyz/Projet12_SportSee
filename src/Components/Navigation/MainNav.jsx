@@ -1,10 +1,13 @@
+import { useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const MainNav = () => {
-  const { user } = useParams();
+  // const { user } = useParams();
+  const { pathname } = useLocation();
+  console.log();
 
-  if (!user) {
+  if (pathname.split("/")[1] === "") {
     return <h1>Home</h1>;
   }
 
@@ -12,16 +15,18 @@ const MainNav = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to={`/${user}`}>Acceuil</NavLink>
+          <NavLink to={`/${pathname.split("/")[1]}`}>Acceuil</NavLink>
         </li>
         <li>
-          <NavLink to={`/${user}/profile`}>Profil</NavLink>
+          <NavLink to={`/${pathname.split("/")[1]}/profile`}>Profil</NavLink>
         </li>
         <li>
-          <NavLink to={`/${user}/settings`}>Réglages</NavLink>
+          <NavLink to={`/${pathname.split("/")[1]}/settings`}>Réglages</NavLink>
         </li>
         <li>
-          <NavLink to={`/${user}/community`}>Communauté</NavLink>
+          <NavLink to={`/${pathname.split("/")[1]}/community`}>
+            Communauté
+          </NavLink>
         </li>
       </ul>
     </nav>
