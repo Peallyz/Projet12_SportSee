@@ -1,33 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
-import Dashboard from "./Pages/Dashboard";
-import WorkInProgress from "./Pages/WorkInProgress";
-import Error from "./Pages/Error";
-import Header from "./Components/Header";
-import { useState } from "react";
+import Router from "./Router";
 
 function App() {
-  const [path, setPath] = useState(window.location.pathname.split("/")[1]);
-
-  return (
-    <BrowserRouter>
-      <Header user={path} />
-      <Routes>
-        <Route path="/" element={<Home setPath={setPath} />} />
-        <Route path="/:user" element={<Dashboard />} />
-        <Route path="/:user/profile" element={<WorkInProgress path={path} />} />
-        <Route
-          path="/:user/settings"
-          element={<WorkInProgress path={path} />}
-        />
-        <Route
-          path="/:user/community"
-          element={<WorkInProgress path={path} />}
-        />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <Router />;
 }
 
 export default App;
