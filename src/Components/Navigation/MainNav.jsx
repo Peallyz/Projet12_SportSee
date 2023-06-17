@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
-import Proptypes from "prop-types";
+import { useParams } from "react-router-dom";
 
-const MainNav = ({ user }) => {
+const MainNav = () => {
+  const { user } = useParams();
+
+  if (!user) {
+    return <h1>Home</h1>;
+  }
+
   return (
     <nav>
       <ul>
@@ -21,7 +27,5 @@ const MainNav = ({ user }) => {
     </nav>
   );
 };
-MainNav.propTypes = {
-  user: Proptypes.string,
-};
+
 export default MainNav;
