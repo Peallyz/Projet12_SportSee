@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const Home = ({ setPath }) => {
   const [firstUser, firstLoading] = useUserData(12, true);
   const [secondUser, secondLoading] = useUserData(18, true);
+
   return (
     <main>
       <nav className="selector">
