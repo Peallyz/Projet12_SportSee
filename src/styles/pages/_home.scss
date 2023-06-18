@@ -1,0 +1,11 @@
+main.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  height: calc(100vh - 90px);
+  h1 {
+    text-align: center;
+    font-size: 2.4rem;
+  }
+}
