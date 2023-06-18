@@ -5,7 +5,9 @@ export const useUserData = (id, isMockedData = false) => {
     ? `/assets/mockedData/user_main_data.json`
     : `http://localhost:3000/user/${id}`;
   const [fetchedData, loading, error] = useFetch(url);
-  const data = fetchedData?.find((user) => user.data.id === id);
+  const data = isMockedData
+    ? fetchedData.find((user) => user.data.id === id)
+    : fetchedData;
 
   return [data, loading, error];
 };
@@ -14,7 +16,9 @@ export const useUserActivity = (id, isMockedData = false) => {
     ? `/assets/mockedData/user_activity.json`
     : `http://localhost:3000/user/${id}/activity`;
   const [fetchedData, loading, error] = useFetch(url);
-  const data = fetchedData?.find((user) => user.data.userId === id);
+  const data = isMockedData
+    ? fetchedData?.find((user) => user.data.userId === id)
+    : fetchedData;
 
   return [data, loading, error];
 };
@@ -25,7 +29,9 @@ export const useUserPerformance = (id, isMockedData = false) => {
     : `http://localhost:3000/user/${id}/performance`;
 
   const [fetchedData, loading, error] = useFetch(url);
-  const data = fetchedData?.find((user) => user.data.userId === id);
+  const data = isMockedData
+    ? fetchedData?.find((user) => user.data.userId === id)
+    : fetchedData;
 
   return [data, loading, error];
 };
@@ -36,7 +42,9 @@ export const useUserAverageSessions = (id, isMockedData = false) => {
     : `http://localhost:3000/user/${id}/average-sessions`;
 
   const [fetchedData, loading, error] = useFetch(url);
-  const data = fetchedData?.find((user) => user.data.userId === id);
+  const data = isMockedData
+    ? fetchedData?.find((user) => user.data.userId === id)
+    : fetchedData;
 
   return [data, loading, error];
 };
