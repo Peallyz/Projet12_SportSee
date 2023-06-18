@@ -7,11 +7,13 @@ const WorkInProgress = () => {
   return (
     <main>
       <AsideNav />
-      <h1>
-        Désolé, cette page est en cours de création. Revenez plus tard pour
-        découvrir le reste des fonctionnalités
-      </h1>
-      <NavLink to={`/${user}`}>Revenir sur votre Dashboard</NavLink>
+      <div className="wip">
+        <h1>
+          Désolé, cette page est en cours de création. Revenez plus tard pour
+          découvrir le reste des fonctionnalités
+        </h1>
+        <NavLink to={`/${user}`}>Revenir sur votre Dashboard</NavLink>
+      </div>
     </main>
   );
 };
