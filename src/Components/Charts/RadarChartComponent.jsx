@@ -32,7 +32,7 @@ const RadarChartComponent = ({ data, loading }) => {
 };
 
 RadarChartComponent.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.any,
   loading: PropTypes.bool,
 };
 export default RadarChartComponent;
