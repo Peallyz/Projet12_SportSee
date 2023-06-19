@@ -3,6 +3,9 @@ import AsideNav from "../Components/Navigation/AsideNav";
 import { DataContext } from "../utils/context/ContextProvider";
 import { useParams } from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
+import BarChartComponent from "../Components/Charts/BarChartComponent";
+import LineChartComponent from "../Components/Charts/LineChartComponent";
+import RadarChartComponent from "../Components/Charts/RadarChartComponent";
 
 const Dashboard = () => {
   const Store = useContext(DataContext);
@@ -29,6 +32,27 @@ const Dashboard = () => {
             Félicitation ! Vous avez explosé vos objectifs hier 👏
           </h1>
         )}
+        <div className="container__data">
+          <div className="container__data--graph">
+            <div className="graph__main">
+              <BarChartComponent
+                data={userActivity}
+                loadind={userActivityLoading}
+              />
+            </div>
+            <div className="graph__aside">
+              <LineChartComponent
+                data={userAverageSessions}
+                loading={userAverageSessionsLoading}
+              />
+              <RadarChartComponent
+                data={userPerformance}
+                loading={userPerformanceLoading}
+              />
+            </div>
+          </div>
+          <aside className="container__data--stats"></aside>
+        </div>
       </div>
     </main>
   );
