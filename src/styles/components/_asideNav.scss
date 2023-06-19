@@ -1,6 +1,7 @@
 .aside__nav {
-  width: 115px;
-  height: calc(100vh - 90px);
+  flex-grow: 1;
+  max-width: 115px;
+  min-height: calc(100vh - 90px);
   background-color: black;
   ul {
     display: flex;
@@ -9,5 +10,6 @@
     align-items: center;
     gap: 20px;
     height: 100%;
+    width: 115px;
   }
 }
