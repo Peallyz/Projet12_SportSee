@@ -6,7 +6,7 @@ export const useUserData = (id, isMockedData = false) => {
     : `http://localhost:3000/user/${id}`;
   const [fetchedData, loading, error] = useFetch(url);
   const data = isMockedData
-    ? fetchedData.find((user) => user.data.id === id)
+    ? fetchedData.find((user) => user.data.id === parseInt(id))
     : fetchedData;
 
   return [data, loading, error];
@@ -17,7 +17,7 @@ export const useUserActivity = (id, isMockedData = false) => {
     : `http://localhost:3000/user/${id}/activity`;
   const [fetchedData, loading, error] = useFetch(url);
   const data = isMockedData
-    ? fetchedData?.find((user) => user.data.userId === id)
+    ? fetchedData?.find((user) => user.data.userId === parseInt(id))
     : fetchedData;
 
   return [data, loading, error];
@@ -30,7 +30,7 @@ export const useUserPerformance = (id, isMockedData = false) => {
 
   const [fetchedData, loading, error] = useFetch(url);
   const data = isMockedData
-    ? fetchedData?.find((user) => user.data.userId === id)
+    ? fetchedData?.find((user) => user.data.userId === parseInt(id))
     : fetchedData;
 
   return [data, loading, error];
@@ -43,7 +43,7 @@ export const useUserAverageSessions = (id, isMockedData = false) => {
 
   const [fetchedData, loading, error] = useFetch(url);
   const data = isMockedData
-    ? fetchedData?.find((user) => user.data.userId === id)
+    ? fetchedData?.find((user) => user.data.userId === parseInt(id))
     : fetchedData;
 
   return [data, loading, error];
