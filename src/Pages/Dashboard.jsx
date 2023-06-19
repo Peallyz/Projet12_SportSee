@@ -6,6 +6,7 @@ import Loader from "../Components/Loader/Loader";
 import BarChartComponent from "../Components/Charts/BarChartComponent";
 import LineChartComponent from "../Components/Charts/LineChartComponent";
 import RadarChartComponent from "../Components/Charts/RadarChartComponent";
+import RadialBarComponent from "../Components/Charts/RadialBarComponent";
 
 const Dashboard = () => {
   const Store = useContext(DataContext);
@@ -47,6 +48,10 @@ const Dashboard = () => {
               />
               <RadarChartComponent
                 data={userPerformance}
+                loading={userPerformanceLoading}
+              />
+              <RadialBarComponent
+                data={userData}
                 loading={userPerformanceLoading}
               />
             </div>
