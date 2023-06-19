@@ -3,32 +3,91 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Legend,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import Loader from "../Loader/Loader";
+import BarChartTooltip from "./BarChartTooltip";
 
 const BarChartComponent = ({ data, loading }) => {
   if (loading || !data) {
     return <Loader />;
   }
+
   return (
-    <BarChart width={835} height={320} data={data.data.sessions}>
-      <Legend />
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="day" />
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="kilogram" fill="#000000" />
-      <Bar dataKey="calories" fill="#E60000" />
-    </BarChart>
+    <>
+      <div className="description">
+        <h3>Activité quotidienne</h3>
+        <div className="legend">
+          <div className="legend__details">
+            <span className="icon icon__red"></span>
+            <p>Poids (kg)</p>
+          </div>
+          <div className="legend__details">
+            <span className="icon icon__black"></span>
+            <p>Calories brûlées (kCal)</p>
+          </div>
+        </div>
+      </div>
+      <ResponsiveContainer height={210}>
+        <BarChart
+          data={data.data.sessions}
+          barGap={8}
+          barCategoryGap={1}
+          fillOpacity={0.5}
+        >
+          <CartesianGrid vertical={false} strokeDasharray="1 1" />
+          <XAxis
+            tickLine={false}
+            tick={{ fontSize: 14 }}
+            dy={15}
+            stroke="1 1"
+          />
+          <YAxis
+            yAxisId="kilogram"
+            dataKey="kilogram"
+            domain={["dataMin - 2", "dataMax + 1"]}
+            tickCount="5"
+            axisLine={false}
+            orientation="right"
+            tickLine={false}
+            tick={{ fontSize: 14 }}
+            dx={15}
+          />
+          <YAxis
+            yAxisId="calories"
+            dataKey="calories"
+            type="number"
+            domain={["dataMin - 20", "dataMax + 10"]}
+            hide={true}
+          />
+          <Tooltip content={<BarChartTooltip />} />
+          <Bar
+            yAxisId="kilogram"
+            dataKey="kilogram"
+            fill="#282D30"
+            barSize={7}
+            radius={[50, 50, 0, 0]}
+            fillOpacity={1}
+          />
+          <Bar
+            yAxisId="calories"
+            dataKey="calories"
+            fill="#E60000"
+            barSize={7}
+            radius={[50, 50, 0, 0]}
+            fillOpacity={1}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </>
   );
 };
 
 BarChartComponent.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.any,
   loading: PropTypes.bool,
 };
 export default BarChartComponent;
