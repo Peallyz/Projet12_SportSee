@@ -1,23 +1,75 @@
 import PropTypes from "prop-types";
-import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import Loader from "../Loader/Loader";
+import LineChartTooltip from "./LineChartTooltip";
+
 const LineChartComponent = ({ data, loading }) => {
   if (loading || !data) {
     return <Loader />;
   }
+
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
+
+  const formatData = data.data.sessions.map((session) => {
+    return { ...session, day: days[session.day - 1] };
+  });
+
   return (
-    <LineChart width={260} height={265} data={data.data.sessions}>
-      <XAxis dataKey="day" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="sessionLength" stroke="#8884d8" />
-    </LineChart>
+    <div className="lineChart">
+      <h3>Durée moyenne des sessions</h3>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={formatData}
+          strokeWidth={0.4}
+          onMouseMove={(e) => {
+            if (e.isTooltipActive === true) {
+              let container = document.querySelector(
+                ".lineChart .recharts-surface"
+              );
+              let MousePosInPercent = Math.round(
+                (e.activeCoordinate.x / container.clientWidth) * 100
+              );
+              container.style.background = `linear-gradient(90deg, rgba(0,0,0,0) ${MousePosInPercent}%, rgba(200,0,0,0.75) ${MousePosInPercent}%, rgba(200,0,0,0.75) 100%)`;
+            }
+          }}
+        >
+          <XAxis
+            type="category"
+            dataKey="day"
+            tickLine={true}
+            stroke="red"
+            tick={{ fontSize: 12, stroke: "white", opacity: 0.8 }}
+            padding={{ right: 10, left: 10 }}
+          />
+          <YAxis
+            dataKey="sessionLength"
+            domain={["dataMin - 10", "dataMax + 25"]}
+            hide={true}
+          />
+          <Tooltip content={<LineChartTooltip />} />
+          <Line
+            type="monotone"
+            dataKey="sessionLength"
+            stroke="rgba(255, 255, 255, 0.7)"
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 2, strokeWidth: 4, stroke: "white" }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
 LineChartComponent.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.any,
   loading: PropTypes.bool,
 };
 export default LineChartComponent;
