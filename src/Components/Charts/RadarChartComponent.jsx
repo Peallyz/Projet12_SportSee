@@ -39,7 +39,7 @@ const RadarChartComponent = ({ data, loading }) => {
           <PolarGrid gridType="polygon" />
           <PolarAngleAxis
             dataKey="kind"
-            stroke="black"
+            stroke="#FFFFFF"
             tickLine={false}
             axisLine={false}
             tick={{ fontSize: 10 }}
