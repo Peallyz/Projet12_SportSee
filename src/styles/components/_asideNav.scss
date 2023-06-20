@@ -1,7 +1,8 @@
 .aside__nav {
   flex-grow: 1;
-  max-width: 115px;
+  width: 115px;
   min-height: calc(100vh - 90px);
+  position: sticky;
   background-color: black;
   ul {
     display: flex;
@@ -11,5 +12,14 @@
     gap: 20px;
     height: 100%;
     width: 115px;
+    position: fixed;
+    top: 0%;
+  }
+  p {
+    position: fixed;
+    transform: rotate(-90deg) translateY(-55%);
+    color: white;
+    font-size: 1.2rem;
+    bottom: 100px;
   }
 }
