@@ -17,6 +17,7 @@ const AsideNav = () => {
           </li>
         ))}
       </ul>
+      <p>Copiryght, SportSee 2020</p>
     </nav>
   );
 };
