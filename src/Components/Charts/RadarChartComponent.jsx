@@ -1,33 +1,58 @@
 import PropTypes from "prop-types";
 import {
-  Legend,
   PolarAngleAxis,
   PolarGrid,
-  PolarRadiusAxis,
   Radar,
   RadarChart,
+  ResponsiveContainer,
 } from "recharts";
 import Loader from "../Loader/Loader";
 const RadarChartComponent = ({ data, loading }) => {
-  if (loading || !data) {
+  if (loading) {
     return <Loader />;
   }
 
+  if (!data)
+    return (
+      <h2 className="error">
+        Nous n&apos;avons pas réussi à récupérer les données
+      </h2>
+    );
+
+  const kinds = [
+    "Cardio",
+    "Energie",
+    "Endurance",
+    "Force",
+    "Vitesse",
+    "Intensité",
+  ];
+
+  const formatData = data.data.data.map((value) => {
+    return { ...value, kind: kinds[value.kind - 1] };
+  });
+
   return (
-    <RadarChart outerRadius={90} width={260} height={265} data={data.data.kind}>
-      <PolarGrid />
-      <PolarAngleAxis dataKey="kind" />
-      <PolarRadiusAxis angle={30} domain={[0, 150]} />
-      <Radar
-        name="Lily"
-        data={data.data.data}
-        dataKey="value"
-        stroke="#82ca9d"
-        fill="#82ca9d"
-        fillOpacity={0.6}
-      />
-      <Legend />
-    </RadarChart>
+    <div className="radarChart">
+      <ResponsiveContainer width="100%" height="100%">
+        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={formatData}>
+          <PolarGrid gridType="polygon" />
+          <PolarAngleAxis
+            dataKey="kind"
+            stroke="black"
+            tickLine={false}
+            axisLine={false}
+            tick={{ fontSize: 10 }}
+          />
+          <Radar
+            dataKey="value"
+            stroke="#FF0101"
+            fill="#FF0101"
+            fillOpacity={0.7}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
