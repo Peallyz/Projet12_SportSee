@@ -6,7 +6,7 @@ export const useUserData = (id, isMockedData = false) => {
     : `http://localhost:3000/user/${id}`;
   const [fetchedData, loading, error] = useFetch(url);
   const data = isMockedData
-    ? fetchedData.find((user) => user.data.id === parseInt(id))
+    ? fetchedData?.find((user) => user.data.id === parseInt(id))
     : fetchedData;
 
   return [data, loading, error];
