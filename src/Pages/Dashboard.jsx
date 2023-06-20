@@ -7,6 +7,7 @@ import BarChartComponent from "../Components/Charts/BarChartComponent";
 import LineChartComponent from "../Components/Charts/LineChartComponent";
 import RadarChartComponent from "../Components/Charts/RadarChartComponent";
 import RadialBarComponent from "../Components/Charts/RadialBarComponent";
+import DetailsCard from "../Components/Charts/DetailsCard";
 
 const Dashboard = () => {
   const Store = useContext(DataContext);
@@ -18,6 +19,8 @@ const Dashboard = () => {
     Store.data.useUserPerformance(user);
   const [userAverageSessions, userAverageSessionsLoading] =
     Store.data.useUserAverageSessions(user);
+
+  const userDetails = ["calories", "proteines", "glucides", "lipides"];
 
   return (
     <main className="dashboard">
@@ -56,7 +59,11 @@ const Dashboard = () => {
               />
             </div>
           </div>
-          <aside className="container__data--stats"></aside>
+          <aside className="container__data--stats">
+            {userDetails.map((detail) => (
+              <DetailsCard key={detail} data={userData} detail={detail} />
+            ))}
+          </aside>
         </div>
       </div>
     </main>
