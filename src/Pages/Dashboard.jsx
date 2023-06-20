@@ -28,7 +28,7 @@ const Dashboard = () => {
         ) : (
           <h1>
             <span>
-              Bonjour <strong>{userData.data.userInfos.firstName}</strong>
+              Bonjour <strong>{userData?.data.userInfos.firstName}</strong>
             </span>
             Félicitation ! Vous avez explosé vos objectifs hier 👏
           </h1>

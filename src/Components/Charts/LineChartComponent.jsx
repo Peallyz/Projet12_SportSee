@@ -11,9 +11,16 @@ import Loader from "../Loader/Loader";
 import LineChartTooltip from "./LineChartTooltip";
 
 const LineChartComponent = ({ data, loading }) => {
-  if (loading || !data) {
+  if (loading) {
     return <Loader />;
   }
+
+  if (!data)
+    return (
+      <h2 className="error">
+        Nous n&apos;avons pas réussi à récupérer les données
+      </h2>
+    );
 
   const days = ["L", "M", "M", "J", "V", "S", "D"];
 

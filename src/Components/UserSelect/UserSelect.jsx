@@ -8,15 +8,21 @@ const UserSelect = ({ user }) => {
   const Store = useContext(DataContext);
 
   const [data, loading] = Store.data.useUserData(user);
+  if (loading) return <Loader />;
 
-  return !loading ? (
+  if (!data)
+    return (
+      <h2 className="error">
+        Nous n&apos;avons pas réussi à récupérer les données
+      </h2>
+    );
+
+  return (
     <NavLink to={`/${data.data.id}`}>
       <span>{data.data.userInfos.firstName}</span>
       <span className="lastname">{data.data.userInfos.lastName}</span>
       <span>Utilisateur : {data.data.id}</span>
     </NavLink>
-  ) : (
-    <Loader />
   );
 };
 

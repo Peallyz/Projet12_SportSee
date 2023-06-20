@@ -12,9 +12,16 @@ import Loader from "../Loader/Loader";
 import BarChartTooltip from "./BarChartTooltip";
 
 const BarChartComponent = ({ data, loading }) => {
-  if (loading || !data) {
+  if (loading) {
     return <Loader />;
   }
+
+  if (!data)
+    return (
+      <h2 className="error">
+        Nous n&apos;avons pas réussi à récupérer les données
+      </h2>
+    );
 
   return (
     <>

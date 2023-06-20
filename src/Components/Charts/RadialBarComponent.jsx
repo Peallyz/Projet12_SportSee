@@ -3,22 +3,31 @@ import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts";
 import Loader from "../Loader/Loader";
 
 const RadialBarComponent = ({ data, loading }) => {
-  if (loading || !data) {
+  if (loading) {
     return <Loader />;
   }
 
-  const score = { score: data.data.todayScore || data.data.score };
+  if (!data)
+    return (
+      <h2 className="error">
+        Nous n&apos;avons pas réussi à récupérer les données
+      </h2>
+    );
+
+  const score = [
+    { name: "score", value: data.data.todayScore || data.data.score },
+  ];
 
   return (
-    <div className="pieChart">
+    <div className="radialChart">
       <h3>Score</h3>
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           innerRadius="0%"
           outerRadius="0%"
           data={score}
-          startAngle={0}
-          endAngle={360}
+          startAngle={90}
+          endAngle={450}
         >
           <RadialBar
             data={[{ value: 1 }]}
@@ -27,7 +36,7 @@ const RadialBarComponent = ({ data, loading }) => {
             fill="#FFF"
           />
           <RadialBar
-            dataKey="score"
+            dataKey="value"
             barSize={10}
             cornerRadius={100}
             fill="#FF0000"
@@ -36,7 +45,7 @@ const RadialBarComponent = ({ data, loading }) => {
       </ResponsiveContainer>
       <p>
         <span>
-          {score.score * 100}%<br />
+          {score[0].value * 100}%<br />
         </span>
         de votre
         <br /> objectif
