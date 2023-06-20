@@ -9,6 +9,7 @@ $secondary: #ff0101;
 @import "./components/userSelect";
 @import "./components/asideNav";
 @import "./charts/charts.scss";
+@import "./components/loader/loader";
 
 *,
 ::before,
@@ -35,4 +36,8 @@ li {
 
 main:not(.home) {
   display: flex;
+}
+h2.error {
+  font-size: 2rem;
+  color: #000000;
 }
