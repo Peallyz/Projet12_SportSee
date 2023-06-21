@@ -1,3 +1,4 @@
+import formatData from "../format/format";
 import useFetch from "./useFetch";
 
 export const useUserData = (id, isMockedData = false) => {
@@ -9,7 +10,10 @@ export const useUserData = (id, isMockedData = false) => {
     ? fetchedData?.find((user) => user.data.id === parseInt(id))
     : fetchedData;
 
-  return [data, loading, error];
+  const formatModel = new formatData();
+  const formatedData = data ? formatModel.formatScore(data) : data;
+
+  return [formatedData, loading, error];
 };
 export const useUserActivity = (id, isMockedData = false) => {
   const url = isMockedData
@@ -33,7 +37,10 @@ export const useUserPerformance = (id, isMockedData = false) => {
     ? fetchedData?.find((user) => user.data.userId === parseInt(id))
     : fetchedData;
 
-  return [data, loading, error];
+  const formatModel = new formatData();
+  const formatedData = data ? formatModel.formatName(data) : data;
+
+  return [formatedData, loading, error];
 };
 
 export const useUserAverageSessions = (id, isMockedData = false) => {
@@ -46,5 +53,8 @@ export const useUserAverageSessions = (id, isMockedData = false) => {
     ? fetchedData?.find((user) => user.data.userId === parseInt(id))
     : fetchedData;
 
-  return [data, loading, error];
+  const formatModel = new formatData();
+  const formatedData = data ? formatModel.formatWeek(data) : data;
+
+  return [formatedData, loading, error];
 };
