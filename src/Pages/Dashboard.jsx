@@ -53,10 +53,7 @@ const Dashboard = () => {
                 data={userPerformance}
                 loading={userPerformanceLoading}
               />
-              <RadialBarComponent
-                data={userData}
-                loading={userPerformanceLoading}
-              />
+              <RadialBarComponent data={userData} loading={userDataLoading} />
             </div>
           </div>
           <aside className="container__data--stats">
