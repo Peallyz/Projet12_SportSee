@@ -19,23 +19,10 @@ const RadarChartComponent = ({ data, loading }) => {
       </h2>
     );
 
-  const kinds = [
-    "Cardio",
-    "Energie",
-    "Endurance",
-    "Force",
-    "Vitesse",
-    "Intensité",
-  ];
-
-  const formatData = data.data.data.map((value) => {
-    return { ...value, kind: kinds[value.kind - 1] };
-  });
-
   return (
     <div className="radarChart">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={formatData}>
+        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={data.data.data}>
           <PolarGrid gridType="polygon" />
           <PolarAngleAxis
             dataKey="kind"

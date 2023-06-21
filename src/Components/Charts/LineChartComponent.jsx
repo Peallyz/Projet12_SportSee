@@ -21,19 +21,12 @@ const LineChartComponent = ({ data, loading }) => {
         Nous n&apos;avons pas réussi à récupérer les données
       </h2>
     );
-
-  const days = ["L", "M", "M", "J", "V", "S", "D"];
-
-  const formatData = data.data.sessions.map((session) => {
-    return { ...session, day: days[session.day - 1] };
-  });
-
   return (
     <div className="lineChart">
       <h3>Durée moyenne des sessions</h3>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={formatData}
+          data={data.data.sessions}
           strokeWidth={0.4}
           onMouseMove={(e) => {
             if (e.isTooltipActive === true) {

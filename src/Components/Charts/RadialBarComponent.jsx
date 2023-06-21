@@ -14,10 +14,7 @@ const RadialBarComponent = ({ data, loading }) => {
       </h2>
     );
 
-  const score = [
-    { name: "score", value: data.data.todayScore || data.data.score },
-  ];
-
+  const score = [{ name: "score", value: data.data.formatedScore }];
   return (
     <div className="radialChart">
       <h3>Score</h3>
