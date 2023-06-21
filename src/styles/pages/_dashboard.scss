@@ -3,24 +3,51 @@
     padding: 55px 100px;
     flex-grow: 1;
     max-width: calc(100vw - 115px);
+
     &__data {
       display: flex;
+      flex-wrap: wrap;
+
       &--graph {
-        width: calc(100% - 265px);
-        min-width: 800px;
+        width: calc(100% - 300px);
+        min-width: 820px;
+
+        @media screen and (max-width: 1430px) {
+          width: 100%;
+          min-width: 0px;
+        }
       }
+
       &--stats {
         display: flex;
         flex-direction: column;
         margin-left: 30px;
+        gap: 20px;
         justify-content: space-between;
+
+        @media screen and (max-width: 1430px) {
+          flex-direction: row;
+          margin-left: 0;
+          margin-top: 50px;
+          width: 100%;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
         .stat__card {
-          width: 260px;
+          width: 248px;
           height: 125px;
           background: #fbfbfb;
           display: flex;
           gap: 25px;
           padding: 30px;
+          @media screen and (max-width: 1430px) {
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            height: auto;
+          }
+
           &--data {
             display: flex;
             flex-direction: column;
@@ -29,8 +56,10 @@
             line-height: 24px;
             font-weight: 700;
             color: #282d30;
+
             span {
               display: block;
+
               &:nth-last-child(1) {
                 font-size: 1.4rem;
                 font-weight: 500;
@@ -43,13 +72,16 @@
       }
     }
   }
+
   h1 {
     color: $primary;
     font-size: 1.8rem;
+
     span {
       font-size: 4.8rem;
       display: block;
       margin-bottom: 35px;
+
       strong {
         color: $secondary;
       }
