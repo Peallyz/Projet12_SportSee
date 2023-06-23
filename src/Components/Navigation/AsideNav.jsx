@@ -1,12 +1,16 @@
 import { PropTypes } from "prop-types";
 import AsideLink from "./AsideLink";
+import iconMeditation from "../../assets/iconMeditation.svg";
+import iconSwiming from "../../assets/iconSwiming.svg";
+import iconBike from "../../assets/iconBike.svg";
+import iconDumbBell from "../../assets/iconDumbBell.svg";
 
 const AsideNav = () => {
   const imgs = [
-    { url: "/src/assets/iconMeditation.svg", alt: "Meditation" },
-    { url: "/src/assets/iconSwiming.svg", alt: "Natation" },
-    { url: "/src/Assets/iconBike.svg", alt: "Vélo" },
-    { url: "/src/assets/iconDumbBell.svg", alt: "Musculation" },
+    { url: iconMeditation, alt: "Meditation" },
+    { url: iconSwiming, alt: "Natation" },
+    { url: iconBike, alt: "Vélo" },
+    { url: iconDumbBell, alt: "Musculation" },
   ];
   return (
     <nav className="aside__nav">

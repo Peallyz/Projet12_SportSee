@@ -7,7 +7,7 @@ const DetailsCard = ({ detail, data }) => {
 
   useEffect(() => {
     if (data) {
-      switch (detail) {
+      switch (detail.type) {
         case "calories":
           setCurrentData(
             data.data.keyData.calorieCount ? data.data.keyData.calorieCount : 0
@@ -42,7 +42,7 @@ const DetailsCard = ({ detail, data }) => {
 
   return (
     <div className="stat__card">
-      <img src={`/src/assets/${detail}-icon.svg`} alt={detail} />
+      <img src={detail.icon} alt={detail} />
       <div className="stat__card--data">
         <span>
           {currentData}

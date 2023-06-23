@@ -9,13 +9,22 @@ import RadialBarComponent from "../Components/Charts/RadialBarComponent";
 import DetailsCard from "../Components/Charts/DetailsCard";
 import Header from "../Components/Header";
 import { useUserData } from "../utils/hooks/fetchDataAPI";
+import iconCalories from "../assets/iconCalories.svg";
+import iconProteines from "../assets/iconProteines.svg";
+import iconGlucides from "../assets/iconGlucides.svg";
+import iconLipides from "../assets/iconLipides.svg";
 
 const Dashboard = () => {
   const { user } = useParams("/user");
 
   const { userData, userDataLoading } = useUserData(user, true);
 
-  const userDetails = ["calories", "proteines", "glucides", "lipides"];
+  const userDetails = [
+    { icon: iconCalories, type: "calories" },
+    { icon: iconProteines, type: "proteines" },
+    { icon: iconGlucides, type: "glucides" },
+    { icon: iconLipides, type: "lipides" },
+  ];
 
   return (
     <>
