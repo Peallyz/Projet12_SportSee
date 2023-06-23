@@ -1,16 +1,13 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { DataContext } from "../../utils/context/ContextProvider";
 import Loader from "../Loader/Loader";
+import { useUserData } from "../../utils/hooks/fetchDataAPI";
 
 const UserSelect = ({ user }) => {
-  const Store = useContext(DataContext);
+  const { userData, userDataLoading } = useUserData(user);
+  if (userDataLoading) return <Loader />;
 
-  const [data, loading] = Store.data.useUserData(user);
-  if (loading) return <Loader />;
-
-  if (!data)
+  if (!userData)
     return (
       <h2 className="error">
         Nous n&apos;avons pas réussi à récupérer les données
@@ -18,10 +15,10 @@ const UserSelect = ({ user }) => {
     );
 
   return (
-    <NavLink to={`/${data.data.id}`}>
-      <span>{data.data.userInfos.firstName}</span>
-      <span className="lastname">{data.data.userInfos.lastName}</span>
-      <span>Utilisateur : {data.data.id}</span>
+    <NavLink to={`/${userData.data.id}`}>
+      <span>{userData.data.userInfos.firstName}</span>
+      <span className="lastname">{userData.data.userInfos.lastName}</span>
+      <span>Utilisateur : {userData.data.id}</span>
     </NavLink>
   );
 };
