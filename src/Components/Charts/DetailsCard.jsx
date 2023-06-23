@@ -55,7 +55,7 @@ const DetailsCard = ({ detail, data }) => {
 };
 
 DetailsCard.propTypes = {
-  detail: PropTypes.string,
+  detail: PropTypes.object,
   data: PropTypes.any,
 };
 

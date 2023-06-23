@@ -9,10 +9,10 @@ import RadialBarComponent from "../Components/Charts/RadialBarComponent";
 import DetailsCard from "../Components/Charts/DetailsCard";
 import Header from "../Components/Header";
 import { useUserData } from "../utils/hooks/fetchDataAPI";
-import iconCalories from "../assets/iconCalories.svg";
-import iconProteines from "../assets/iconProteines.svg";
-import iconGlucides from "../assets/iconGlucides.svg";
-import iconLipides from "../assets/iconLipides.svg";
+import iconCalories from "../assets/calories-icon.svg";
+import iconProteines from "../assets/proteines-icon.svg";
+import iconGlucides from "../assets/glucides-icon.svg";
+import iconLipides from "../assets/lipides-icon.svg";
 
 const Dashboard = () => {
   const { user } = useParams("/user");
