@@ -42,13 +42,13 @@ const DetailsCard = ({ detail, data }) => {
 
   return (
     <div className="stat__card">
-      <img src={detail.icon} alt={detail} />
+      <img src={detail.icon} alt={detail.type} />
       <div className="stat__card--data">
         <span>
           {currentData}
-          {detail === "calories" ? "kCal" : "g"}
+          {detail.type === "calories" ? "kCal" : "g"}
         </span>
-        <span>{detail}</span>
+        <span>{detail.type}</span>
       </div>
     </div>
   );

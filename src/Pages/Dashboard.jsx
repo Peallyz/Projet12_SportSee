@@ -55,7 +55,11 @@ const Dashboard = () => {
             </div>
             <aside className="container__data--stats">
               {userDetails.map((detail) => (
-                <DetailsCard key={detail} data={userData} detail={detail} />
+                <DetailsCard
+                  key={detail.type}
+                  data={userData}
+                  detail={detail}
+                />
               ))}
             </aside>
           </div>
