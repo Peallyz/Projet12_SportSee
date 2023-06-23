@@ -41,7 +41,7 @@ const Dashboard = () => {
               <div className="graph__aside">
                 <LineChartComponent user={user} />
                 <RadarChartComponent user={user} />
-                <RadialBarComponent data={userData} loading={userDataLoading} />
+                <RadialBarComponent user={user} />
               </div>
             </div>
             <aside className="container__data--stats">

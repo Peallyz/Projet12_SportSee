@@ -1,20 +1,23 @@
 import PropTypes from "prop-types";
 import { RadialBar, RadialBarChart, ResponsiveContainer } from "recharts";
 import Loader from "../Loader/Loader";
+import { useUserData } from "../../utils/hooks/fetchDataAPI";
 
-const RadialBarComponent = ({ data, loading }) => {
-  if (loading) {
+const RadialBarComponent = ({ user }) => {
+  const { userData, userDataLoading } = useUserData(user);
+
+  if (userDataLoading) {
     return <Loader />;
   }
 
-  if (!data)
+  if (!userData)
     return (
       <h2 className="error">
         Nous n&apos;avons pas réussi à récupérer les données
       </h2>
     );
 
-  const score = [{ name: "score", value: data.data.formatedScore }];
+  const score = [{ name: "score", value: userData.data.formatedScore }];
   return (
     <div className="radialChart">
       <h3>Score</h3>
@@ -52,8 +55,7 @@ const RadialBarComponent = ({ data, loading }) => {
 };
 
 RadialBarComponent.propTypes = {
-  data: PropTypes.any,
-  loading: PropTypes.bool,
+  user: PropTypes.string.isRequired,
 };
 
 export default RadialBarComponent;
