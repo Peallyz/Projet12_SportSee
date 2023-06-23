@@ -13,7 +13,7 @@ import { useUserAverageSessions } from "../../utils/hooks/fetchDataAPI";
 
 const LineChartComponent = ({ user }) => {
   const { userAverageSessions, userAverageSessionsLoading } =
-    useUserAverageSessions(user);
+    useUserAverageSessions(user, true);
 
   if (userAverageSessionsLoading) {
     return <Loader />;

@@ -4,7 +4,7 @@ import Loader from "../Loader/Loader";
 import { useUserData } from "../../utils/hooks/fetchDataAPI";
 
 const UserSelect = ({ user }) => {
-  const { userData, userDataLoading } = useUserData(user);
+  const { userData, userDataLoading } = useUserData(user, true);
   if (userDataLoading) return <Loader />;
 
   if (!userData)

@@ -13,7 +13,7 @@ import BarChartTooltip from "./BarChartTooltip";
 import { useUserActivity } from "../../utils/hooks/fetchDataAPI";
 
 const BarChartComponent = ({ user }) => {
-  const { userActivity, userActivityLoading } = useUserActivity(user);
+  const { userActivity, userActivityLoading } = useUserActivity(user, true);
 
   if (userActivityLoading) {
     return <Loader />;

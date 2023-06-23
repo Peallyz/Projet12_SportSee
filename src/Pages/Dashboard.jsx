@@ -13,7 +13,7 @@ import { useUserData } from "../utils/hooks/fetchDataAPI";
 const Dashboard = () => {
   const { user } = useParams("/user");
 
-  const { userData, userDataLoading } = useUserData(user);
+  const { userData, userDataLoading } = useUserData(user, true);
 
   const userDetails = ["calories", "proteines", "glucides", "lipides"];
 
@@ -41,7 +41,7 @@ const Dashboard = () => {
               <div className="graph__aside">
                 <LineChartComponent user={user} />
                 <RadarChartComponent user={user} />
-                <RadialBarComponent data={userData} loading={userDataLoading} />
+                <RadialBarComponent user={user} />
               </div>
             </div>
             <aside className="container__data--stats">

@@ -9,7 +9,10 @@ import {
 import Loader from "../Loader/Loader";
 import { useUserPerformance } from "../../utils/hooks/fetchDataAPI";
 const RadarChartComponent = ({ user }) => {
-  const { userPerformance, userPerformanceLoading } = useUserPerformance(user);
+  const { userPerformance, userPerformanceLoading } = useUserPerformance(
+    user,
+    true
+  );
 
   if (userPerformanceLoading) {
     return <Loader />;
