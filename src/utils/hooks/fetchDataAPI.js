@@ -13,7 +13,11 @@ export const useUserData = (id, isMockedData = false) => {
   const formatModel = new formatData();
   const formatedData = data ? formatModel.formatScore(data) : data;
 
-  return [formatedData, loading, error];
+  return {
+    userData: formatedData,
+    userDataLoading: loading,
+    userDataError: error,
+  };
 };
 export const useUserActivity = (id, isMockedData = false) => {
   const url = isMockedData
@@ -24,7 +28,11 @@ export const useUserActivity = (id, isMockedData = false) => {
     ? fetchedData?.find((user) => user.data.userId === parseInt(id))
     : fetchedData;
 
-  return [data, loading, error];
+  return {
+    userActivity: data,
+    userActivityLoading: loading,
+    userActivityError: error,
+  };
 };
 
 export const useUserPerformance = (id, isMockedData = false) => {
@@ -40,7 +48,11 @@ export const useUserPerformance = (id, isMockedData = false) => {
   const formatModel = new formatData();
   const formatedData = data ? formatModel.formatName(data) : data;
 
-  return [formatedData, loading, error];
+  return {
+    userPerformance: formatedData,
+    userPerformanceLoading: loading,
+    userError: error,
+  };
 };
 
 export const useUserAverageSessions = (id, isMockedData = false) => {
@@ -56,5 +68,9 @@ export const useUserAverageSessions = (id, isMockedData = false) => {
   const formatModel = new formatData();
   const formatedData = data ? formatModel.formatWeek(data) : data;
 
-  return [formatedData, loading, error];
+  return {
+    userAverageSessions: formatedData,
+    userAverageSessionsLoading: loading,
+    userAverageSessionsError: error,
+  };
 };
