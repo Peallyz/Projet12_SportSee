@@ -12,6 +12,7 @@ import LineChartTooltip from "./LineChartTooltip";
 import { useUserAverageSessions } from "../../utils/hooks/fetchDataAPI";
 
 const LineChartComponent = ({ user }) => {
+  // fetch data from API with custom hook using useFetch with userID. useCustomHooks(id: number or string, isMocked: boolean with false has default value)
   const { userAverageSessions, userAverageSessionsLoading } =
     useUserAverageSessions(user);
 

@@ -4,6 +4,7 @@ import Loader from "../Loader/Loader";
 import { useUserData } from "../../utils/hooks/fetchDataAPI";
 
 const RadialBarComponent = ({ user }) => {
+  // fetch data from API with custom hook using useFetch with userID. useCustomHooks(id: number or string, isMocked: boolean with false has default value)
   const { userData, userDataLoading } = useUserData(user);
 
   if (userDataLoading) {

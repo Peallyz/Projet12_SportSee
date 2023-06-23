@@ -13,6 +13,7 @@ import BarChartTooltip from "./BarChartTooltip";
 import { useUserActivity } from "../../utils/hooks/fetchDataAPI";
 
 const BarChartComponent = ({ user }) => {
+  // fetch data from API with custom hook using useFetch with userID. useCustomHooks(id: number or string, isMocked: boolean with false has default value)
   const { userActivity, userActivityLoading } = useUserActivity(user);
 
   if (userActivityLoading) {

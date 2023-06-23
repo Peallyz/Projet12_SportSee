@@ -16,7 +16,7 @@ import iconLipides from "../assets/lipides-icon.svg";
 
 const Dashboard = () => {
   const { user } = useParams("/user");
-
+  // fetch data from API with custom hook using useFetch with userID. useCustomHooks(id: number or string, isMocked: boolean with false has default value)
   const { userData, userDataLoading } = useUserData(user);
 
   const userDetails = [

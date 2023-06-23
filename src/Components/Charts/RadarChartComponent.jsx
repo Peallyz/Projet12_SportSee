@@ -9,6 +9,7 @@ import {
 import Loader from "../Loader/Loader";
 import { useUserPerformance } from "../../utils/hooks/fetchDataAPI";
 const RadarChartComponent = ({ user }) => {
+  // fetch data from API with custom hook using useFetch with userID. useCustomHooks(id: number or string, isMocked: boolean with false has default value)
   const { userPerformance, userPerformanceLoading } = useUserPerformance(user);
 
   if (userPerformanceLoading) {
