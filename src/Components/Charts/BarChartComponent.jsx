@@ -33,11 +33,11 @@ const BarChartComponent = ({ user }) => {
         <h3>Activité quotidienne</h3>
         <div className="legend">
           <div className="legend__details">
-            <span className="icon icon__red"></span>
+            <span className="icon icon__black"></span>
             <p>Poids (kg)</p>
           </div>
           <div className="legend__details">
-            <span className="icon icon__black"></span>
+            <span className="icon icon__red"></span>
             <p>Calories brûlées (kCal)</p>
           </div>
         </div>
