@@ -10,13 +10,16 @@ import {
 } from "recharts";
 import Loader from "../Loader/Loader";
 import BarChartTooltip from "./BarChartTooltip";
+import { useUserActivity } from "../../utils/hooks/fetchDataAPI";
 
-const BarChartComponent = ({ data, loading }) => {
-  if (loading) {
+const BarChartComponent = ({ user }) => {
+  const { userActivity, userActivityLoading } = useUserActivity(user);
+
+  if (userActivityLoading) {
     return <Loader />;
   }
 
-  if (!data)
+  if (!userActivity)
     return (
       <h2 className="error">
         Nous n&apos;avons pas réussi à récupérer les données
@@ -40,7 +43,7 @@ const BarChartComponent = ({ data, loading }) => {
       </div>
       <ResponsiveContainer height={210}>
         <BarChart
-          data={data.data.sessions}
+          data={userActivity.data.sessions}
           barGap={8}
           barCategoryGap={1}
           fillOpacity={0.5}
@@ -94,7 +97,6 @@ const BarChartComponent = ({ data, loading }) => {
 };
 
 BarChartComponent.propTypes = {
-  data: PropTypes.any,
-  loading: PropTypes.bool,
+  user: PropTypes.string.isRequired,
 };
 export default BarChartComponent;

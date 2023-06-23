@@ -9,13 +9,17 @@ import {
 } from "recharts";
 import Loader from "../Loader/Loader";
 import LineChartTooltip from "./LineChartTooltip";
+import { useUserAverageSessions } from "../../utils/hooks/fetchDataAPI";
 
-const LineChartComponent = ({ data, loading }) => {
-  if (loading) {
+const LineChartComponent = ({ user }) => {
+  const { userAverageSessions, userAverageSessionsLoading } =
+    useUserAverageSessions(user);
+
+  if (userAverageSessionsLoading) {
     return <Loader />;
   }
 
-  if (!data)
+  if (!userAverageSessions)
     return (
       <h2 className="error">
         Nous n&apos;avons pas réussi à récupérer les données
@@ -26,7 +30,7 @@ const LineChartComponent = ({ data, loading }) => {
       <h3>Durée moyenne des sessions</h3>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={data.data.sessions}
+          data={userAverageSessions.data.sessions}
           strokeWidth={0.4}
           onMouseMove={(e) => {
             if (e.isTooltipActive === true) {
@@ -69,7 +73,6 @@ const LineChartComponent = ({ data, loading }) => {
 };
 
 LineChartComponent.propTypes = {
-  data: PropTypes.any,
-  loading: PropTypes.bool,
+  user: PropTypes.string.isRequired,
 };
 export default LineChartComponent;

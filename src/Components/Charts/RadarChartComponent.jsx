@@ -7,12 +7,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Loader from "../Loader/Loader";
-const RadarChartComponent = ({ data, loading }) => {
-  if (loading) {
+import { useUserPerformance } from "../../utils/hooks/fetchDataAPI";
+const RadarChartComponent = ({ user }) => {
+  const { userPerformance, userPerformanceLoading } = useUserPerformance(user);
+
+  if (userPerformanceLoading) {
     return <Loader />;
   }
 
-  if (!data)
+  if (!userPerformance)
     return (
       <h2 className="error">
         Nous n&apos;avons pas réussi à récupérer les données
@@ -22,7 +25,12 @@ const RadarChartComponent = ({ data, loading }) => {
   return (
     <div className="radarChart">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="65%" data={data.data.data}>
+        <RadarChart
+          cx="50%"
+          cy="50%"
+          outerRadius="65%"
+          data={userPerformance.data.data}
+        >
           <PolarGrid gridType="polygon" />
           <PolarAngleAxis
             dataKey="kind"
@@ -44,7 +52,6 @@ const RadarChartComponent = ({ data, loading }) => {
 };
 
 RadarChartComponent.propTypes = {
-  data: PropTypes.any,
-  loading: PropTypes.bool,
+  user: PropTypes.string.isRequired,
 };
 export default RadarChartComponent;
