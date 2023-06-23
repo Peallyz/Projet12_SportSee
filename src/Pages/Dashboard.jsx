@@ -9,13 +9,22 @@ import RadialBarComponent from "../Components/Charts/RadialBarComponent";
 import DetailsCard from "../Components/Charts/DetailsCard";
 import Header from "../Components/Header";
 import { useUserData } from "../utils/hooks/fetchDataAPI";
+import iconCalories from "../assets/calories-icon.svg";
+import iconProteines from "../assets/proteines-icon.svg";
+import iconGlucides from "../assets/glucides-icon.svg";
+import iconLipides from "../assets/lipides-icon.svg";
 
 const Dashboard = () => {
   const { user } = useParams("/user");
 
   const { userData, userDataLoading } = useUserData(user);
 
-  const userDetails = ["calories", "proteines", "glucides", "lipides"];
+  const userDetails = [
+    { icon: iconCalories, type: "calories" },
+    { icon: iconProteines, type: "proteines" },
+    { icon: iconGlucides, type: "glucides" },
+    { icon: iconLipides, type: "lipides" },
+  ];
 
   return (
     <>
@@ -46,7 +55,11 @@ const Dashboard = () => {
             </div>
             <aside className="container__data--stats">
               {userDetails.map((detail) => (
-                <DetailsCard key={detail} data={userData} detail={detail} />
+                <DetailsCard
+                  key={detail.type}
+                  data={userData}
+                  detail={detail}
+                />
               ))}
             </aside>
           </div>

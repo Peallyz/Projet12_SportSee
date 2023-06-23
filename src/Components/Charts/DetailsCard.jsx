@@ -7,7 +7,7 @@ const DetailsCard = ({ detail, data }) => {
 
   useEffect(() => {
     if (data) {
-      switch (detail) {
+      switch (detail.type) {
         case "calories":
           setCurrentData(
             data.data.keyData.calorieCount ? data.data.keyData.calorieCount : 0
@@ -42,20 +42,20 @@ const DetailsCard = ({ detail, data }) => {
 
   return (
     <div className="stat__card">
-      <img src={`/src/assets/${detail}-icon.svg`} alt={detail} />
+      <img src={detail.icon} alt={detail.type} />
       <div className="stat__card--data">
         <span>
           {currentData}
-          {detail === "calories" ? "kCal" : "g"}
+          {detail.type === "calories" ? "kCal" : "g"}
         </span>
-        <span>{detail}</span>
+        <span>{detail.type}</span>
       </div>
     </div>
   );
 };
 
 DetailsCard.propTypes = {
-  detail: PropTypes.string,
+  detail: PropTypes.object,
   data: PropTypes.any,
 };
 
