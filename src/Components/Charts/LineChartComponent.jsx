@@ -34,7 +34,7 @@ const LineChartComponent = ({ user }) => {
           data={userAverageSessions.data.sessions}
           strokeWidth={0.4}
           onMouseMove={(e) => {
-            if (e.isTooltipActive === true) {
+            if (e.isTooltipActive) {
               let container = document.querySelector(
                 ".lineChart .recharts-surface"
               );
